@@ -1,0 +1,60 @@
+{
+	"name": "@kkutuio/ui",
+	"version": "0.1.0",
+	"license": "AGPL-3.0-only",
+	"type": "module",
+	"packageManager": "pnpm@12.5.1",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/KKuTuIO/ui.git"
+	},
+	"files": [
+		"dist"
+	],
+	"sideEffects": [
+		"**/*.css"
+	],
+	"svelte": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"svelte": "./dist/index.js",
+			"default": "./dist/index.js"
+		},
+		"./theme.css": "./dist/theme.css",
+		"./tokens.css": "./dist/tokens.css",
+		"./components.css": "./dist/components.css",
+		"./fonts.css": "./dist/fonts.css",
+		"./icons.css": "./dist/icons.css"
+	},
+	"scripts": {
+		"package": "svelte-package -i src/lib -o dist",
+		"check": "svelte-check --tsconfig ./jsconfig.json",
+		"test": "vitest run",
+		"lint:package": "publint",
+		"verify": "pnpm run check && pnpm run test && pnpm run package && pnpm run lint:package",
+		"prepack": "pnpm run package"
+	},
+	"peerDependencies": {
+		"svelte": "^5.56.0",
+		"tailwindcss": "^4.3.0"
+	},
+	"devDependencies": {
+		"@sveltejs/package": "3.0.2",
+		"@sveltejs/vite-plugin-svelte": "7.3.0",
+		"@testing-library/jest-dom": "7.0.1",
+		"@testing-library/svelte": "5.4.2",
+		"jsdom": "30.0.1",
+		"publint": "0.3.25",
+		"svelte": "5.56.10",
+		"svelte-check": "4.7.6",
+		"tailwindcss": "4.3.3",
+		"typescript": "6.0.3",
+		"vite": "8.2.2",
+		"vitest": "4.1.11"
+	},
+	"engines": {
+		"node": ">=22.13.0"
+	}
+}

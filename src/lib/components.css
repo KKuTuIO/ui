@@ -1,0 +1,35 @@
+/* The themed surface: put `kk` on the element that wraps the UI. Tailwind's rounded-* are pinned to the radius scale inside it. */
+.kk {
+	--radius-md: var(--kk-r-sm);
+	--radius-lg: var(--kk-r-sm);
+	--radius-xl: var(--kk-r-md);
+	--radius-2xl: var(--kk-r-lg);
+	--radius-3xl: var(--kk-r-lg);
+	font-family: 'NanumSquare Neo', 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+	color: var(--kk-text);
+	background: var(--kk-bg);
+}
+.kk dialog { color: var(--kk-text); background: var(--kk-surface); }
+.kk ::selection { background: var(--kk-accent-soft); }
+
+/* In a layer so Tailwind utilities on the same element win. */
+@layer components {
+	.kk-card { background: var(--kk-surface); border: 1.5px solid var(--kk-line); border-radius: var(--kk-r-lg); box-shadow: var(--kk-shadow); }
+	.kk-input { background: var(--kk-surface-2); border: 1.5px solid var(--kk-line); border-radius: var(--kk-r-md); color: inherit; }
+	.kk-input:focus-within, .kk-input:focus { outline: none; border-color: var(--kk-accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--kk-accent) 28%, transparent); }
+	.kk-btn { min-height: 2.75rem; padding: 0 1.1rem; border-radius: var(--kk-r-md); font-weight: 800; border: 1.5px solid var(--kk-line-strong); background: var(--kk-surface); box-shadow: 0 3px 0 var(--kk-line-strong); transition: transform 0.08s, box-shadow 0.08s, background 0.1s, filter 0.1s; }
+	.kk-btn:hover:not(:disabled) { background: var(--kk-accent-soft); }
+	.kk-btn:active:not(:disabled) { transform: translateY(2px); box-shadow: 0 1px 0 var(--kk-line-strong); }
+	.kk-btn:disabled { opacity: 0.5; }
+	.kk-btn-primary { color: #fff; border-color: transparent; background: var(--kk-fill); text-shadow: 0 1px 0 rgb(0 0 0 / 0.25); box-shadow: 0 3px 0 var(--kk-fill-edge); }
+	.kk-btn-primary:hover:not(:disabled) { background: var(--kk-fill); filter: brightness(1.06); }
+	.kk-btn-primary:active:not(:disabled) { box-shadow: 0 1px 0 var(--kk-fill-edge); }
+	.kk-btn-danger { color: #fff; border-color: transparent; background: var(--kk-danger-fill); box-shadow: 0 3px 0 color-mix(in srgb, var(--kk-danger-fill) 60%, black); }
+	/* the plain .kk-btn hover paints a pale green, which would make the white label unreadable */
+	.kk-btn-danger:hover:not(:disabled) { background: color-mix(in srgb, var(--kk-danger-fill) 88%, white); }
+	/* The call-to-action: horizontal green-to-teal gradient, no border. */
+	.kk-btn-hero { color: #fff; border: 0; text-shadow: 0 1px 1px rgb(0 0 0 / 0.3); background: linear-gradient(90deg, var(--kk-cta-from), var(--kk-cta-to)); box-shadow: 0 4px 0 var(--kk-cta-edge), inset 0 1px 0 rgb(255 255 255 / 0.3); }
+	.kk-btn-hero:hover:not(:disabled) { background: linear-gradient(90deg, var(--kk-cta-from), var(--kk-cta-to)); filter: brightness(1.06); }
+	.kk-btn-hero:active:not(:disabled) { box-shadow: 0 2px 0 var(--kk-cta-edge), inset 0 1px 0 rgb(255 255 255 / 0.3); transform: translateY(2px); }
+	.kk-chip { display: inline-flex; align-items: center; gap: 0.25rem; padding: 0.05rem 0.55rem; border-radius: var(--kk-r-sm); background: var(--kk-accent-soft); color: var(--kk-accent-strong); font-size: 0.75rem; font-weight: 700; }
+}

@@ -1,0 +1,100 @@
+/* Tailwind does not look inside node_modules on its own: this makes it read the classes used by the components shipped here. */
+@source "./";
+
+/* `dark:` follows the device (prefers-color-scheme) unless the root pins a theme with `data-theme="light"` or `data-theme="dark"`. */
+@custom-variant dark {
+	@media (prefers-color-scheme: dark) {
+		&:where(:root:not([data-theme='light']) *) {
+			@slot;
+		}
+	}
+	&:where(:root[data-theme='dark'] *) {
+		@slot;
+	}
+}
+
+/* Colour and shape tokens. `-strong` is the accent darkened until text on a light surface passes 4.5:1. */
+:root {
+	--kk-bg: #f1f6f1;
+	--kk-surface: #ffffff;
+	--kk-surface-2: #f5f8f5;
+	--kk-line: #dce5dc;
+	--kk-line-strong: #b9c8b9;
+	--kk-text: #18211a;
+	--kk-muted: #556456;
+	/* green-500 for decoration, green-700 for text on a light surface, green-100 for soft fills. */
+	--kk-accent: #22c55e;
+	--kk-accent-strong: #15803d;
+	--kk-accent-soft: #dcfce7;
+	/* Solid fills (primary buttons, selected chips, checked boxes) and their hard lower edge. */
+	--kk-fill: #22c55e;
+	--kk-fill-edge: #15803d;
+	--kk-panel: #f4f4f5;
+	--kk-warn: #b45309;
+	--kk-warn-soft: #fdf0dc;
+	--kk-danger: #c62828;
+	--kk-danger-fill: #c62828; /* solid button fill: white text stays readable in both themes */
+	--kk-danger-soft: #fde8e8;
+	--kk-blue: #2563eb;
+	--kk-shadow: 0 2px 0 var(--kk-line-strong);
+	/* Radius scale: small (list options, tooltips, tags) / control (buttons, inputs, chips) / surface (cards, dialogs). */
+	--kk-r-sm: 0.5rem;
+	--kk-r-md: 0.75rem;
+	--kk-r-lg: 1rem;
+	/* Call-to-action: green-500 to teal-500, left to right, with a hard darker edge. */
+	--kk-cta-from: #22c55e;
+	--kk-cta-to: #14b8a6;
+	--kk-cta-edge: #0f7a5c;
+}
+@media (prefers-color-scheme: dark) {
+	:root:not([data-theme='light']) {
+		--kk-bg: #0f1510;
+		--kk-surface: #172019;
+		--kk-surface-2: #1d2820;
+		--kk-line: #2a382c;
+		--kk-line-strong: #3d4f3f;
+		--kk-text: #e8f0e8;
+		--kk-muted: #9fb2a0;
+		--kk-accent: #4ade80;
+		--kk-accent-strong: #16a34a;
+		--kk-accent-soft: #14301f;
+		--kk-fill: #16a34a;
+		--kk-fill-edge: #0e6b30;
+		--kk-panel: #1b211d;
+		--kk-warn: #fbbf24;
+		--kk-warn-soft: #3a2f12;
+		--kk-danger: #ff8a80;
+		--kk-danger-fill: #b92d2d;
+		--kk-danger-soft: #3b1d1d;
+		--kk-blue: #7db3ff;
+		--kk-shadow: 0 2px 0 rgb(0 0 0 / 0.5);
+		--kk-cta-from: #16a34a;
+		--kk-cta-to: #0d9488;
+		--kk-cta-edge: #0a5e4c;
+	}
+}
+:root[data-theme='dark'] {
+	--kk-bg: #0f1510;
+	--kk-surface: #172019;
+	--kk-surface-2: #1d2820;
+	--kk-line: #2a382c;
+	--kk-line-strong: #3d4f3f;
+	--kk-text: #e8f0e8;
+	--kk-muted: #9fb2a0;
+	--kk-accent: #4ade80;
+	--kk-accent-strong: #16a34a;
+	--kk-accent-soft: #14301f;
+	--kk-fill: #16a34a;
+	--kk-fill-edge: #0e6b30;
+	--kk-panel: #1b211d;
+	--kk-warn: #fbbf24;
+	--kk-warn-soft: #3a2f12;
+	--kk-danger: #ff8a80;
+	--kk-danger-fill: #b92d2d;
+	--kk-danger-soft: #3b1d1d;
+	--kk-blue: #7db3ff;
+	--kk-shadow: 0 2px 0 rgb(0 0 0 / 0.5);
+	--kk-cta-from: #16a34a;
+	--kk-cta-to: #0d9488;
+	--kk-cta-edge: #0a5e4c;
+}
